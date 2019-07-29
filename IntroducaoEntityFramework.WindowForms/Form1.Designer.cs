@@ -43,6 +43,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnCadastroProdutoNomeLoja = new System.Windows.Forms.Button();
             this.btnPesquisarLojaProduto = new System.Windows.Forms.Button();
+            this.btnPesquisaPorNome = new System.Windows.Forms.Button();
+            this.btnAumentarPreco = new System.Windows.Forms.Button();
+            this.btnPesquisarProduto = new System.Windows.Forms.Button();
+            this.btnRemoveLoja = new System.Windows.Forms.Button();
+            this.btnRemoverProduto = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -143,9 +148,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(9, 17);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 13);
+            this.label4.Size = new System.Drawing.Size(90, 13);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Nome do Produo";
+            this.label4.Text = "Nome do Produto";
             // 
             // tbValorProduto
             // 
@@ -160,9 +165,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(9, 53);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(82, 13);
+            this.label5.Size = new System.Drawing.Size(85, 13);
             this.label5.TabIndex = 9;
-            this.label5.Text = "valor do Produo";
+            this.label5.Text = "valor do Produto";
             // 
             // btnCadastroProdutoNomeLoja
             // 
@@ -176,19 +181,74 @@
             // 
             // btnPesquisarLojaProduto
             // 
-            this.btnPesquisarLojaProduto.Location = new System.Drawing.Point(338, 405);
+            this.btnPesquisarLojaProduto.Location = new System.Drawing.Point(426, 237);
             this.btnPesquisarLojaProduto.Name = "btnPesquisarLojaProduto";
-            this.btnPesquisarLojaProduto.Size = new System.Drawing.Size(166, 33);
+            this.btnPesquisarLojaProduto.Size = new System.Drawing.Size(193, 33);
             this.btnPesquisarLojaProduto.TabIndex = 5;
-            this.btnPesquisarLojaProduto.Text = "Pesquisar Loja do produto";
+            this.btnPesquisarLojaProduto.Text = "Pesquisar Loja por produto";
             this.btnPesquisarLojaProduto.UseVisualStyleBackColor = true;
             this.btnPesquisarLojaProduto.Click += new System.EventHandler(this.BtnPesquisarLojaProduto_Click);
+            // 
+            // btnPesquisaPorNome
+            // 
+            this.btnPesquisaPorNome.Location = new System.Drawing.Point(426, 23);
+            this.btnPesquisaPorNome.Name = "btnPesquisaPorNome";
+            this.btnPesquisaPorNome.Size = new System.Drawing.Size(193, 33);
+            this.btnPesquisaPorNome.TabIndex = 6;
+            this.btnPesquisaPorNome.Text = "Pesquisar Loja por nome";
+            this.btnPesquisaPorNome.UseVisualStyleBackColor = true;
+            this.btnPesquisaPorNome.Click += new System.EventHandler(this.BtnPesquisaPorNome_Click);
+            // 
+            // btnAumentarPreco
+            // 
+            this.btnAumentarPreco.Location = new System.Drawing.Point(426, 60);
+            this.btnAumentarPreco.Name = "btnAumentarPreco";
+            this.btnAumentarPreco.Size = new System.Drawing.Size(193, 33);
+            this.btnAumentarPreco.TabIndex = 7;
+            this.btnAumentarPreco.Text = "Aumentar 10% no valor dos produtos";
+            this.btnAumentarPreco.UseVisualStyleBackColor = true;
+            this.btnAumentarPreco.Click += new System.EventHandler(this.BtnAumentarPreco_Click);
+            // 
+            // btnPesquisarProduto
+            // 
+            this.btnPesquisarProduto.Location = new System.Drawing.Point(426, 276);
+            this.btnPesquisarProduto.Name = "btnPesquisarProduto";
+            this.btnPesquisarProduto.Size = new System.Drawing.Size(193, 33);
+            this.btnPesquisarProduto.TabIndex = 8;
+            this.btnPesquisarProduto.Text = "Pesquisar produto";
+            this.btnPesquisarProduto.UseVisualStyleBackColor = true;
+            this.btnPesquisarProduto.Click += new System.EventHandler(this.BtnPesquisarProduto_Click);
+            // 
+            // btnRemoveLoja
+            // 
+            this.btnRemoveLoja.Location = new System.Drawing.Point(426, 99);
+            this.btnRemoveLoja.Name = "btnRemoveLoja";
+            this.btnRemoveLoja.Size = new System.Drawing.Size(193, 33);
+            this.btnRemoveLoja.TabIndex = 9;
+            this.btnRemoveLoja.Text = "Remover Loja";
+            this.btnRemoveLoja.UseVisualStyleBackColor = true;
+            this.btnRemoveLoja.Click += new System.EventHandler(this.BtnRemoveLoja_Click);
+            // 
+            // btnRemoverProduto
+            // 
+            this.btnRemoverProduto.Location = new System.Drawing.Point(426, 320);
+            this.btnRemoverProduto.Name = "btnRemoverProduto";
+            this.btnRemoverProduto.Size = new System.Drawing.Size(193, 33);
+            this.btnRemoverProduto.TabIndex = 10;
+            this.btnRemoverProduto.Text = "Remover Produto";
+            this.btnRemoverProduto.UseVisualStyleBackColor = true;
+            this.btnRemoverProduto.Click += new System.EventHandler(this.BtnRemoverProduto_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnRemoverProduto);
+            this.Controls.Add(this.btnRemoveLoja);
+            this.Controls.Add(this.btnPesquisarProduto);
+            this.Controls.Add(this.btnAumentarPreco);
+            this.Controls.Add(this.btnPesquisaPorNome);
             this.Controls.Add(this.btnPesquisarLojaProduto);
             this.Controls.Add(this.btnCadastroProdutoNomeLoja);
             this.Controls.Add(this.panel2);
@@ -221,6 +281,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnCadastroProdutoNomeLoja;
         private System.Windows.Forms.Button btnPesquisarLojaProduto;
+        private System.Windows.Forms.Button btnPesquisaPorNome;
+        private System.Windows.Forms.Button btnAumentarPreco;
+        private System.Windows.Forms.Button btnPesquisarProduto;
+        private System.Windows.Forms.Button btnRemoveLoja;
+        private System.Windows.Forms.Button btnRemoverProduto;
     }
 }
 

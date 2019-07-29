@@ -40,6 +40,7 @@ namespace IntroducaoEntityFramework.WindowForms
             _context.Lojas.Add(loja);
             _context.Produtos.Add(produto);
             _context.SaveChanges();
+            MessageBox.Show("Cadastro efetudado com sucesso!", "Sucesso");
             LimparCampos();
         }
 
@@ -74,13 +75,13 @@ namespace IntroducaoEntityFramework.WindowForms
             bool flag = true;
             if (string.IsNullOrEmpty(tbNomeLoja.Text))
             {
-                MessageBox.Show("Informe o nome da loja", "Informação");
+                MessageBox.Show("Informe o nome da loja", "Alerta");
                 flag = false;
             }
 
             var loja = _context.Lojas.FirstOrDefault(x => x.Nome.Equals(tbNomeLoja.Text));
             if (loja == null && flag)
-                MessageBox.Show("Loja não esta cadastrada");
+                MessageBox.Show("Loja não esta cadastrada", "Alerta");
 
             if (loja != null)
             {
@@ -110,7 +111,127 @@ namespace IntroducaoEntityFramework.WindowForms
             }
             else
             {
-                MessageBox.Show("Infrome o nome da loga", "Informação");
+                MessageBox.Show("Informe o nome da loja", "Alerta");
+            }
+        }
+
+        private void BtnPesquisaPorNome_Click(object sender, EventArgs e)
+        {
+            var loja = _context.Lojas.FirstOrDefault(l => l.Nome.Equals(tbNomeLoja.Text) || l.Nome.Contains(tbNomeLoja.Text));
+            if(loja != null)
+            {
+                tbNomeLoja.Text = loja.Nome;
+                rtbDescricaoLoja.Text = loja.Descricao;
+            }
+            else
+            {
+                MessageBox.Show("Loja não cadastrada", "Alerta");
+                LimparCampos();
+            }
+        }
+
+        private void BtnAumentarPreco_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tbNomeLoja.Text))
+            {
+                var loja = _context.Lojas.FirstOrDefault(l => l.Nome.Equals(tbNomeLoja.Text));
+                if(loja != null && loja.Produtos.Count > 0)
+                {
+                    loja.Produtos.ForEach(p => p.Valor += p.Valor * 0.10m);
+                    _context.SaveChanges();
+                    MessageBox.Show("Aumento Realizado com sucesso", "Sucesso");
+                }
+                else
+                {
+                    MessageBox.Show("Loja não cadastrada", "Alerta");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Informe o nome da Loja", "Alerta");
+            }
+            LimparCampos();
+        }
+
+        private void BtnPesquisarProduto_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tbNomeProduto.Text))
+            {
+                var produto = _context.Produtos.FirstOrDefault(p => p.Nome.Equals(tbNomeProduto.Text));
+                if(produto != null)
+                {
+                    tbNomeProduto.Text = produto.Nome;
+                    rtbDescricaoProduto.Text = produto.Descricao;
+                    tbValorProduto.Text = produto.Valor.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Produto não cadastrado", "Alerta");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Informe o nome do produto", "Alerta");
+            }
+        }
+
+        private void BtnRemoveLoja_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tbNomeLoja.Text))
+            {
+                var loja = _context.Lojas.FirstOrDefault(l => l.Nome.Equals(tbNomeLoja.Text));
+                if(loja != null)
+                {
+                    try
+                    {
+                        _context.Lojas.Remove(loja);
+                        _context.SaveChanges();
+                        MessageBox.Show("Loja removida com sucesso", "Sucesso");
+                        LimparCampos();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Não foi possível remover a loja :{ex.Message}", "Erro");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Loja não cadastrada", "Alerta");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Informe o nome da loja que deseja remover", "Alerta");
+            }
+        }
+
+        private void BtnRemoverProduto_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tbNomeProduto.Text))
+            {
+                var produto = _context.Produtos.FirstOrDefault(l => l.Nome.Equals(tbNomeProduto.Text));
+                if (produto != null)
+                {
+                    try
+                    {
+                        _context.Produtos.Remove(produto);
+                        _context.SaveChanges();
+                        MessageBox.Show("Produto removido com sucesso", "Sucesso");
+                        LimparCampos();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Não foi possível remover a Produto :{ex.Message}", "Erro");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Produto não cadastrado", "Alerta");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Informe o nome do Produto que deseja remover", "Alerta");
             }
         }
     }
